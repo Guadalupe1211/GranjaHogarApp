@@ -20,12 +20,12 @@ export const getProducts = async () => {
     }
 };
 
-export const updateProduct = async (id) => {
+export const updateProduct = async (id, productData) => {
     try {
-        const response = await axios.put(`http://127.0.0.1:8000/api/productos/${id}`)
-        return response.data
+        const response = await axios.put(`http://127.0.0.1:8000/api/productos/${id}`, productData);
+        return response.data;
     }catch (error){
-        console.error('Error Updating product')
+        console.error('Error en actualizar el producto', error)
         throw error;
     }
 }
@@ -36,7 +36,7 @@ export const deleteProduct = async (id) => {
         return response.data
         
     } catch (error) {
-        console.error('Error deleting the product')
+        console.error('Error al borrar el producto', error)
         throw error; 
     }
 }

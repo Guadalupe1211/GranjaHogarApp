@@ -5,7 +5,7 @@ import './App.css';
 import CategoriasPage from './Paginas/Categorias';
 import ProductosPorCategoria from './Componentes/ProductosPorCategoria';
 import { Products } from './Paginas/Products';
-
+import {ProductosPage} from './Paginas/Productos';
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
           <Route path="/categorias" element={<CategoriasPage />} />
           <Route path="/categorias/:id" element={<ProductosPorCategoria />} />
           <Route path="/products/" element={<Products />} />
+          <Route path="/Productos/" element={<ProductosPage />} />
         </Routes>
       </Router>
     </div>
