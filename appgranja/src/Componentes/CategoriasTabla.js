@@ -1,42 +1,42 @@
-// CategoriasTabla.js
+// CategoriasGaleria.js
 import React, { useEffect, useState } from 'react';
 import * as CategoriaService from '../Services/CategoriaService';
 import { Link } from 'react-router-dom';
+import '../CategoriasGaleria.css'; // Importa el archivo de estilos CSS
 
-
-export const CategoriasTabla = () => {
+export const CategoriasGaleria = () => {
     const [categorias, setCategorias] = useState([]);
 
-
-   
-
     useEffect(() => {
-        CategoriaService.getCategorias().then(setCategorias).catch(console.error);
+        const fetchData = async () => {
+            try {
+                const categoriasData = await CategoriaService.getCategorias();
+                setCategorias(categoriasData);
+            } catch (error) {
+                console.error('Error al obtener las categorías:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {categorias.map((categoria) => (
-                    <tr key={categoria.id}>
-                        <td>{categoria.id}</td>
-                        <td><Link to={`/categorias/${categoria.id}`}>
-                        {categoria.nombre}
-                        </Link>
-                        </td>
-                        <td>{categoria.descripcion}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <div className="galeria">
+            {categorias.map((categoria) => (
+                <div key={categoria.id} className="categoria-card">
+                    <Link to={`/categorias/${categoria.id}`} className="categoria-link">
+                        <div className="categoria-imagen" style={{backgroundImage: `https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/89E2/production/_106589253_amino.jpg(${categoria.imagen})`}}>
+                            {/* No es necesario usar la etiqueta <img> */}
+                        </div>
+                        <div className="categoria-content">
+                            <h2>{categoria.nombre}</h2>
+                            <p>{categoria.descripcion}</p>
+                        </div>
+                    </Link>
+                </div>
+            ))}
+        </div>
     );
 };
 
-export default CategoriasTabla;
+export default CategoriasGaleria;
