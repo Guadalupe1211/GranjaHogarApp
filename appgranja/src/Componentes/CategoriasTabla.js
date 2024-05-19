@@ -1,4 +1,3 @@
-// CategoriasGaleria.js
 import React, { useEffect, useState } from 'react';
 import * as CategoriaService from '../Services/CategoriaService';
 import { Link } from 'react-router-dom';
@@ -25,7 +24,7 @@ export const CategoriasGaleria = () => {
             {categorias.map((categoria) => (
                 <div key={categoria.id} className="categoria-card">
                     <Link to={`/categorias/${categoria.id}`} className="categoria-link">
-                        <div className="categoria-imagen" style={{backgroundImage: `https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/89E2/production/_106589253_amino.jpg(${categoria.imagen})`}}>
+                        <div className="categoria-imagen" style={{backgroundImage: `url(${categoria.imagen})`}}>
                             {/* No es necesario usar la etiqueta <img> */}
                         </div>
                         <div className="categoria-content">

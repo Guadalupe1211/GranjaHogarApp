@@ -10,13 +10,18 @@ const instance = axios.create({
     timeout: 1000,
 });
 
+// URL de la imagen predeterminada
+const DEFAULT_IMAGE_URL = 'https://media.istockphoto.com/id/1364776788/es/vector/ilustraci%C3%B3n-vectorial-de-donaci%C3%B3n-de-comestibles-de-cajas-de-alimentos-contenedor-de-cart%C3%B3n.jpg?s=612x612&w=0&k=20&c=6zP-AmwNOgxyjw20P3r72gyAtQkIRlrWj3dd9NJQMVk=';
+
 // Función para obtener todas las categorías
 export const getCategorias = async () => {
+    
     try {
         const response = await instance.get(API_URL);
         const categorias = response.data.map(categoria => ({
             ...categoria,
-            imagen: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/89E2/production/_106589253_amino.jpg"
+            
+            imagen: categoria.imagen || DEFAULT_IMAGE_URL // Usa la imagen de la categoría o la predeterminada
         }));
         return categorias;
     } catch (error) {
@@ -29,7 +34,10 @@ export const getCategorias = async () => {
 export const getCategoriaById = async (id) => {
     try {
         const response = await instance.get(`/${id}/`);
-        return response.data;
+        return {
+            ...response.data,
+            imagen: response.data.imagen || DEFAULT_IMAGE_URL // Usa la imagen de la categoría o la predeterminada
+        };
     } catch (error) {
         console.error(`Error al obtener la categoría con ID ${id}:`, error);
         throw error;
