@@ -2,7 +2,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import '../App.css';
+
 export const Product = ({ products, onDelete, onUpdate }) => {
     return (
         <>

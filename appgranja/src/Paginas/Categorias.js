@@ -2,7 +2,7 @@
 import React from 'react';
 //import CategoriasTabla from './CategoriasTabla';
 //import CategoriasTabla from './Componentes/CategoriasTabla';
-import CategoriasTabla from '../Componentes/CategoriasTabla';
+import CategoriasGaleria from '../Componentes/CategoriasTabla';
 import CreateCategorias from '../Componentes/CreateTabla';
 
 
@@ -10,7 +10,7 @@ const CategoriasPage = () => {
     return (
         <div>
             <h1>Categorias</h1>
-            <CategoriasTabla />
+            <CategoriasGaleria />
             <CreateCategorias />
     
     
