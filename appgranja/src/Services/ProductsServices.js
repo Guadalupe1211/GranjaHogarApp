@@ -22,7 +22,7 @@ export const getProducts = async () => {
 
 export const updateProduct = async (id, productData) => {
     try {
-        const response = await axios.put(`http://127.0.0.1:8000/api/productos/${id}`, productData);
+        const response = await axios.put(`http://127.0.0.1:8000/api/productos/${id}/`, productData);
         return response.data;
     }catch (error){
         console.error('Error en actualizar el producto', error)

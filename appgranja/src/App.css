@@ -179,7 +179,7 @@ form button {
 }
 
 form button[type="submit"] {
-  background-color: #6fff00;
+  background-color: #2d2d2d;
   color: white;
 }
 
@@ -213,3 +213,106 @@ table th {
 table tr:nth-child(even) {background-color: #f9f9f9;}
 
 table tr:hover {background-color: #ddd;}
+
+/* boton producto esconder */
+/* Botón base */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al hacer clic en el botón */
+button:active {
+  background-color: #004494;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón de ocultar formulario */
+button.ocultar-formulario {
+  background-color: #dc3545;
+}
+
+button.ocultar-formulario:hover {
+  background-color: #c82333;
+}
+
+button.ocultar-formulario:active {
+  background-color: #bd2130;
+}
+
+/* Estilo para el botón de agregar producto */
+button.agregar-producto {
+  background-color: #28a745;
+}
+
+button.agregar-producto:hover {
+  background-color: #218838;
+}
+
+button.agregar-producto:active {
+  background-color: #1e7e34;
+}
+
+/* Estilo para posicionar el botón en la esquina superior derecha */
+.button-container {
+  position: relative;
+}
+.button-container button {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+}
+
+/* Estilos para los botones en Product.js */
+.update-button, .delete-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.update-button {
+  background-color: #4CAF50; /* Verde */
+  color: rgb(0, 0, 0);
+}
+
+.update-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336; /* Rojo */
+  color: rgb(0, 0, 0);
+}
+
+.delete-button:hover {
+  background-color: #da190b;
+}
+
+
+.titulo-productos {
+  text-align: center;
+  font-size: 2.5rem; /* Tamaño de fuente grande */
+  color: #333; /* Color del texto */
+  margin-bottom: 20px; /* Espacio debajo del título */
+  font-family: 'Arial', sans-serif; /* Familia de fuentes */
+}
+
+

@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { createProduct, updateProduct, deleteProduct, getCategories } from '../Services/ProductsServices';
-import {getCategorias} from '../Services/CategoriaService'
+import { createProduct, updateProduct } from '../Services/ProductsServices';
+import { getCategorias } from '../Services/CategoriaService';
 
-const ProductoForm = () => {
-    const [producto, setProducto] = useState({
-        id: '',
-        nombre: '',
-        fecha_de_caducidad: '',
-        descripcion: '',
-        precio: '',
-        cantidad_en_stock: '',
-        categoria: '',
-    });
-
+const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
+    
+    const [producto, setProducto] = useState(productoInicial);
     const [categorias, setCategorias] = useState([]);
+    
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -28,6 +21,10 @@ const ProductoForm = () => {
         fetchCategories();
     }, []);
 
+    useEffect(() => {
+        setProducto(productoInicial);
+    }, [productoInicial]);
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setProducto(prevState => ({
@@ -36,73 +33,29 @@ const ProductoForm = () => {
         }));
     };
 
-    const handleCreate = async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        
         try {
-            const response = await createProduct({
-                nombre: producto.nombre,
-                fecha_de_caducidad: producto.fecha_de_caducidad,
-                descripcion: producto.descripcion,
-                precio: producto.precio,
-                cantidad_en_stock: producto.cantidad_en_stock,
-                categoria: producto.categoria,
-            });
-            alert('Producto creado: ' + response.nombre);
-            setProducto({ id: '', nombre: '', fecha_de_caducidad: '', descripcion: '', precio: '', cantidad_en_stock: '', categoria: '' });
+            const id = producto.id;
+            const aux = producto;
+            delete aux.id;
+            if (id) {
+                
+                await updateProduct(id, aux);
+                alert('Producto actualizado correctamente');
+            } else {
+                await createProduct(producto);
+                alert('Producto creado correctamente');
+            }
+            onProductoGuardado();
         } catch (error) {
-            console.error('Error creating product:', error);
-        }
-    };
-
-    const handleUpdate = async (event) => {
-        event.preventDefault();
-        if (!producto.id) {
-            alert('ID is required for updating a product');
-            return;
-        }
-        try {
-            const response = await updateProduct(producto.id, {
-                nombre: producto.nombre,
-                fecha_de_caducidad: producto.fecha_de_caducidad,
-                descripcion: producto.descripcion,
-                precio: producto.precio,
-                cantidad_en_stock: producto.cantidad_en_stock,
-                categoria: producto.categoria,
-            });
-            alert('Producto actualizado: ' + response.nombre);
-        } catch (error) {
-            console.error('Error updating product:', error);
-        }
-    };
-
-    const handleDelete = async (event) => {
-        event.preventDefault();
-        if (!producto.id) {
-            alert('ID is required to delete a product');
-            return;
-        }
-        try {
-            await deleteProduct(producto.id);
-            alert('Producto eliminado');
-            setProducto({ id: '', nombre: '', fecha_de_caducidad: '', descripcion: '', precio: '', cantidad_en_stock: '', categoria: '' });
-        } catch (error) {
-            console.error('Error deleting product:', error);
-            alert('Error deleting product: ' + error.message);
+            console.error('Error al guardar el producto:', error);
         }
     };
 
     return (
-        <form>
-            <div>
-                <label>ID (for update only):</label>
-                <input
-                    type="text"
-                    name="id"
-                    value={producto.id}
-                    onChange={handleChange}
-                    placeholder="ID de Producto"
-                />
-            </div>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>Nombre:</label>
                 <input
@@ -168,12 +121,21 @@ const ProductoForm = () => {
                     ))}
                 </select>
             </div>
-            <button type="submit" onClick={handleCreate}>Crear Producto</button>
-            <button type="submit" onClick={handleUpdate}>Actualizar Producto</button>
-            <button type="button" onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>Eliminar Producto</button>
+            <button type="submit">{producto.id ? 'Actualizar Producto' : 'Crear Producto'}</button>
         </form>
     );
 };
 
+ProductoForm.defaultProps = {
+    productoInicial: {
+        id: '',
+        nombre: '',
+        fecha_de_caducidad: '',
+        descripcion: '',
+        precio: '',
+        cantidad_en_stock: '',
+        categoria: '',
+    }
+};
 
 export default ProductoForm;

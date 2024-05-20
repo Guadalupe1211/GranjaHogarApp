@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-
-
-
-// Funciones adicionales como crear, actualizar, eliminar categorías podrían ir aquí
 // Function to create a new category
 export const createCategoria = async (categoriaData) => {
     try {
@@ -36,7 +32,6 @@ export const deleteCategoria = async (id) => {
         throw error;
     }
 };
-
 
 export const fetchProductsByCategoryId = async (categoryId) => {
     try {
