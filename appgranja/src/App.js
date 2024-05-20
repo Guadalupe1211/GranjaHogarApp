@@ -6,22 +6,23 @@ import CategoriasPage from './Paginas/Categorias';
 import ProductosPorCategoria from './Componentes/ProductosPorCategoria';
 import { Productos } from './Paginas/Productos';
 import {ProductosPage} from './Paginas/Productos';
-
+import {Home} from './Paginas/Home'
+import { BarraNavegacion } from './Componentes/BarraNavegacion';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1> Inventario </h1>
-      </header>
+  <>
       <Router>
+      <BarraNavegacion/>
+      
         <Routes>
+          <Route path="/" element = {<Home/>}/>
           <Route path="/categorias" element={<CategoriasPage />} />
           <Route path="/categorias/:id" element={<ProductosPorCategoria />} />
           <Route path="/Productos/" element={<Productos />} />
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 
