@@ -274,7 +274,7 @@ button.agregar-producto:active {
 }
 .button-container button {
   position: absolute;
-  top: 10px;
+  top: -45px;
   right: 40px;
 }
 
@@ -309,10 +309,8 @@ button.agregar-producto:active {
 
 .titulo-productos {
   text-align: center;
-  font-size: 2.5rem; /* Tamaño de fuente grande */
-  color: #333; /* Color del texto */
-  margin-bottom: 20px; /* Espacio debajo del título */
-  font-family: 'Arial', sans-serif; /* Familia de fuentes */
+  font-size: 2em; /* Ajusta el tamaño de la fuente según sea necesario */
+  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
 }
 
 
