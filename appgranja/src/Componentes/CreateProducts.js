@@ -86,14 +86,17 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
                 />
             </div>
             <div>
-                <label>Precio:</label>
-                <input
-                    type="number"
-                    name="precio"
-                    value={producto.precio}
+            <label>Estado:</label>
+                <select
+                    name="estado"
+                    value={producto.estado}
                     onChange={handleChange}
                     required
-                />
+                >
+                    <option value="">Seleccione un estado</option>
+                    <option value="donado">Donado</option>
+                    <option value="comprado">Comprado</option>
+                </select>
             </div>
             <div>
                 <label>Cantidad:</label>

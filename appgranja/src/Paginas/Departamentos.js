@@ -22,11 +22,18 @@ const DepartamentosPage = () => {
     };
 
     const toggleFormVisibility = () => {
-        setShowForm(prevShowForm => !prevShowForm);
+        setShowForm((prevShowForm) => {
+            if (prevShowForm) {
+                // Limpiar el formulario al ocultarlo
+                setDepartamentoSeleccionado({ id: '', nombre: '', descripcion: '' });
+            }
+            return !prevShowForm;
+        });
     };
 
     const handleDepartamentoGuardado = async () => {
         setShowForm(false);
+        setDepartamentoSeleccionado({ id: '', nombre: '', descripcion: '' }); // Limpiar el formulario al guardar
         await fetchData();
     };
 
@@ -63,11 +70,21 @@ const DepartamentosPage = () => {
         setShowForm(true);
     };
 
+    const handleDeleteDepartamento = async (id) => {
+        try {
+            await DepartamentoServices.deleteDepartamento(id);
+            alert('Departamento eliminado correctamente');
+            setDepartamentos((prevDepartamentos) => prevDepartamentos.filter((dep) => dep.id !== id));
+        } catch (error) {
+            console.error('Error al eliminar el departamento:', error);
+        }
+    };
+
     return (
         <div>
             <h1>Departamentos</h1>
             <div className="button-container">
-            <button
+                <button
                     className={showForm ? "ocultar-formulario" : "agregar-departamento"}
                     onClick={toggleFormVisibility}
                 >
@@ -98,7 +115,11 @@ const DepartamentosPage = () => {
                     <button type="submit">{departamentoSeleccionado.id ? 'Actualizar Departamento' : 'Crear Departamento'}</button>
                 </form>
             )}
-            <DepartamentosTabla onEditDepartamento={handleEditDepartamento} />
+            <DepartamentosTabla 
+                departamentos={departamentos} 
+                onEditDepartamento={handleEditDepartamento} 
+                onDeleteDepartamento={handleDeleteDepartamento} 
+            />
         </div>
     );
 };

@@ -1,40 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-
-import * as DepartamentoServices from '../Services/DepartamentoServices';
 import '../Departamentos.css';
 
-const DepartamentosTabla = ({ onEditDepartamento }) => {
-    const [departamentos, setDepartamentos] = useState([]);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const departamentosData = await DepartamentoServices.getDepartamentos();
-                setDepartamentos(departamentosData);
-            } catch (error) {
-                console.error('Error al obtener los departamentos:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+const DepartamentosTabla = ({ departamentos, onEditDepartamento, onDeleteDepartamento }) => {
     const handleUpdate = (departamento) => {
         onEditDepartamento(departamento);
     };
 
-    const handleDelete = async (id) => {
-        try {
-            await DepartamentoServices.deleteDepartamento(id);
-            alert('Departamento eliminado correctamente');
-            setDepartamentos((prevDepartamentos) => prevDepartamentos.filter((dep) => dep.id !== id));
-        } catch (error) {
-            console.error('Error al eliminar el departamento:', error);
-        }
+    const handleDelete = (id) => {
+        onDeleteDepartamento(id);
     };
 
     return (
