@@ -9,7 +9,7 @@ import {ProductosPage} from './Paginas/Productos';
 import {Home} from './Paginas/Home'
 import { BarraNavegacion } from './Componentes/BarraNavegacion';
 import DepartamentosPage from './Paginas/Departamentos';
-
+import MovimientoInventarioPage from './Paginas/MovimientoInventario';
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path="/productos/:id" element={<ProductosPorCategoria />} />
           <Route path="/Productos/" element={<Productos />} />
           <Route path="/Departamento" element={<DepartamentosPage />} />
+          <Route path="/Movimiento-inventario" element={<MovimientoInventarioPage />} />
         </Routes>
       </Router>
     </>

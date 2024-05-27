@@ -1,0 +1,41 @@
+/* App.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .page-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+  }
+  
+  .movimientos-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  .movimientos-table th,
+  .movimientos-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .movimientos-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .movimientos-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .movimientos-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
