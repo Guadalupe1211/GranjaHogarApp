@@ -2,3 +2,5 @@
 *.sqlite3
 pyvenv.cfg
 *.pyc
+SistemaInventario/db.sqlite3
+SistemaInventario/db.sqlite3
