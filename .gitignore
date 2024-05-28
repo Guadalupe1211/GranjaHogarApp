@@ -1,2 +1,4 @@
 #IgnoreFiles
 *.sqlite3
+pyvenv.cfg
+*.pyc
