@@ -37,7 +37,7 @@ function App() {
         "departamento": 3,
         "cantidad_en_stock": 0
     }]}/>}/> */}
-        <Route path="inventario-departamento" element={<InventarioDepartamentos/>}/>
+        <Route path="inventario-departamentos" element={<InventarioDepartamentos/>}/>
         </Routes>
       </Router>
     </>
