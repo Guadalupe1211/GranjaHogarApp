@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom';
 export const ProductosTabla = () => {
     const [productos, setProductos] = useState([]);
 
-//AYUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-   
+
 
     useEffect(() => {
         CategoriaService.getProductos().then(setCategorias).catch(console.error);

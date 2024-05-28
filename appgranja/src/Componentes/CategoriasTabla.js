@@ -1,42 +1,70 @@
-// CategoriasTabla.js
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import * as CategoriaService from '../Services/CategoriaService';
-import { Link } from 'react-router-dom';
+import * as CategoriaServiceCreate from '../Services/CategoriaServiceCreate';
 
-
-export const CategoriasTabla = () => {
+export const CategoriasGaleria = ({ onEditCategoria }) => {
     const [categorias, setCategorias] = useState([]);
-
-
-   
+    const navigate = useNavigate();
 
     useEffect(() => {
-        CategoriaService.getCategorias().then(setCategorias).catch(console.error);
+        const fetchData = async () => {
+            try {
+                const categoriasData = await CategoriaService.getCategorias();
+                setCategorias(categoriasData);
+            } catch (error) {
+                console.error('Error al obtener las categorías:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
+    const handleUpdate = (categoria) => {
+        onEditCategoria(categoria);
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await CategoriaServiceCreate.deleteCategoria(id);
+            alert('Categoría eliminada correctamente');
+            setCategorias((prevCategorias) => prevCategorias.filter((cat) => cat.id !== id));
+        } catch (error) {
+            console.error('Error al eliminar la categoría:', error);
+        }
+    };
+
+    const handleCategoryClick = (categoriaId) => {
+        navigate(`/productos/${categoriaId}`);
+    };
+
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div>
+            <div className="galeria">
                 {categorias.map((categoria) => (
-                    <tr key={categoria.id}>
-                        <td>{categoria.id}</td>
-                        <td><Link to={`/categorias/${categoria.id}`}>
-                        {categoria.nombre}
-                        </Link>
-                        </td>
-                        <td>{categoria.descripcion}</td>
-                    </tr>
+                    <div key={categoria.id} className="categoria-card" onClick={() => handleCategoryClick(categoria.id)}>
+                        <div className="categoria-imagen" style={{ backgroundImage: `url(${categoria.imagen})` }}></div>
+                        <div className="categoria-content">
+                            <div className="categoria-header">
+                                <h2>{categoria.nombre}</h2>
+                                <div className="categoria-buttons">
+                                    <button className="update-button" onClick={(e) => { e.stopPropagation(); handleUpdate(categoria); }}>
+                                        <FontAwesomeIcon icon={faPenToSquare} />
+                                    </button>
+                                    <button className="delete-button" onClick={(e) => { e.stopPropagation(); handleDelete(categoria.id); }}>
+                                        <FontAwesomeIcon icon={faTrash} />
+                                    </button>
+                                </div>
+                            </div>
+                            <p>{categoria.descripcion}</p>
+                        </div>
+                    </div>
                 ))}
-            </tbody>
-        </table>
+            </div>
+        </div>
     );
 };
 
-export default CategoriasTabla;
+export default CategoriasGaleria;

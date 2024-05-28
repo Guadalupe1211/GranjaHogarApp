@@ -11,21 +11,51 @@ body{
   padding:0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 40;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(20px + 2vmin);
-  color: white;
+
+
+/*Barra navegacion desig*/
+.navbar-custom {
+    background-color: #242526; /* Dark gray background */
+    padding: 1rem; /* Add some padding for spacing */
+    display: flex;
+    justify-content: space-between;
 }
 
-App-link {
-  color: #61dafb;
+.navbar-custom-banner{
+  color: #ffffff;
+  padding: 0.5rem 1rem; /* Add padding around the links */
+  padding-right: 5rem;
 }
 
+.navbar-custom li{
+  display: inline-block;
+}
+
+/* Style for navigation links */
+.navbar-custom a {
+    color: #ffffff; /* White text color */
+    text-decoration: none; /* Remove underlines */
+    padding: 0.5rem 1rem; /* Add padding around the links */
+    display: inline-block; /* Display as block elements */
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+/* Hover effect for navigation links */
+.navbar-custom a:hover {
+    color: #ffcc00; /* Yellow text color on hover */
+}
+
+/* Active link style (when the page is active) */
+.navbar-custom a.active {
+    font-weight: bold; /* Make the active link bold */
+}
+
+/* Spacing between navigation items */
+.navbar-custom li {
+    margin-right: 1rem; /* Adjust spacing as needed */
+}
+
+/* Banner design for products components */
 .cardMetadata {
   display: flex;
   flex-direction: column;
@@ -82,6 +112,24 @@ App-link {
 }
 
 
+/*Design for home page*/
+.Home{
+  display:flex;
+  flex-direction: column;
+  padding: 4% 20%;
+  background-size: cover;
+  height: 100%;
+  min-height: 560px;
+  }
+
+.Home p{
+  padding: 10px;
+}
+
+.Home li{
+  padding: 4px;
+}
+
 /* Base styles for the form */
 form {
   background: #fff;
@@ -131,7 +179,7 @@ form button {
 }
 
 form button[type="submit"] {
-  background-color: #6fff00;
+  background-color: #2d2d2d;
   color: white;
 }
 
@@ -241,3 +289,105 @@ table tr:hover {background-color: #ddd;}
   float:center;
   padding-top: 20px;
 }
+/* boton producto esconder */
+/* Botón base */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al hacer clic en el botón */
+button:active {
+  background-color: #004494;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón de ocultar formulario */
+button.ocultar-formulario {
+  background-color: #dc3545;
+}
+
+button.ocultar-formulario:hover {
+  background-color: #c82333;
+}
+
+button.ocultar-formulario:active {
+  background-color: #bd2130;
+}
+
+/* Estilo para el botón de agregar producto */
+button.agregar-producto {
+  background-color: #28a745;
+}
+
+button.agregar-producto:hover {
+  background-color: #218838;
+}
+
+button.agregar-producto:active {
+  background-color: #1e7e34;
+}
+
+/* Estilo para posicionar el botón en la esquina superior derecha */
+.button-container {
+  position: relative;
+}
+.button-container button {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+}
+
+/* Estilos para los botones en Product.js */
+.update-button, .delete-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.update-button {
+  background-color: #4CAF50; /* Verde */
+  color: rgb(0, 0, 0);
+}
+
+.update-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336; /* Rojo */
+  color: rgb(0, 0, 0);
+}
+
+.delete-button:hover {
+  background-color: #da190b;
+}
+
+
+.titulo-productos {
+  text-align: center;
+  font-size: 2.5rem; /* Tamaño de fuente grande */
+  color: #333; /* Color del texto */
+  margin-bottom: 20px; /* Espacio debajo del título */
+  font-family: 'Arial', sans-serif; /* Familia de fuentes */
+}
+
+
