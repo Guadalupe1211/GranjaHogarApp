@@ -26,10 +26,15 @@ const CategoriasPage = () => {
         setShowForm(prevShowForm => !prevShowForm);
     };
 
-    const handleCategoriaGuardada = async () => {
+    const handleCategoriaGuardada = async (categoriaActualizada) => {
         setShowForm(false);
-        await fetchData();
-        // Recargar las categorías después de guardar
+        if (categoriaActualizada.id) {
+            setCategorias(prevCategorias =>
+                prevCategorias.map(cat => (cat.id === categoriaActualizada.id ? categoriaActualizada : cat))
+            );
+        } else {
+            fetchData();
+        }
     };
 
     const handleSubmit = async (event) => {
@@ -40,14 +45,15 @@ const CategoriasPage = () => {
             const aux = categoriaSeleccionada;
             delete aux.id;
             if (id) {
-                await CategoriaServiceCreate.updateCategoria(id, aux);
+                const updatedCategoria = await CategoriaServiceCreate.updateCategoria(id, aux);
                 alert('Categoría actualizada correctamente');
+                handleCategoriaGuardada(updatedCategoria);
             } else {
-                await CategoriaServiceCreate.createCategoria(categoriaSeleccionada);
+                const nuevaCategoria = await CategoriaServiceCreate.createCategoria(categoriaSeleccionada);
                 alert('Categoría creada correctamente');
+                setCategorias([...categorias, nuevaCategoria]);
             }
-            // Recargar las categorías después de guardar
-            handleCategoriaGuardada();
+            
         } catch (error) {
             console.error('Error al guardar la categoría:', error);
         }
@@ -70,8 +76,8 @@ const CategoriasPage = () => {
         <div>
             <h1>Categorías</h1>
             <div className="button-container">
-                <button
-                    className="btn btn-primary"
+            <button
+                    className={showForm ? "ocultar-formulario" : "agregar-departamento"}
                     onClick={toggleFormVisibility}
                 >
                     {showForm ? 'Ocultar Formulario' : 'Agregar Categoría'}

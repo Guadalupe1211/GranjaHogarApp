@@ -23,8 +23,19 @@ export const BarraNavegacion = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/Departamento" activeclassname="active">
+                        Departamentos
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/Movimiento-inventario" activeclassname="active">
+                    Movimiento de inventario
+                    </NavLink>
+                    </li>
+                    <li>
                     <NavLink to="/inventario-departamentos" activeclassname="active">
                         Inventario Departamentos
+                    
                     </NavLink>
                 </li>
                 {/* Add more NavLink components for other navigation items */}

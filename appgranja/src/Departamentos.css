@@ -1,0 +1,151 @@
+/* Botón base */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al hacer clic en el botón */
+button:active {
+    background-color: #004494;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón de ocultar formulario */
+button.ocultar-formulario {
+    background-color: #dc3545;
+}
+
+button.ocultar-formulario:hover {
+    background-color: #c82333;
+}
+
+button.ocultar-formulario:active {
+    background-color: #bd2130;
+}
+
+/* Estilo para el botón de agregar producto */
+button.agregar-departamento {
+    background-color: #4CAF50;
+}
+
+button.agregar-departamento:hover {
+    background-color: #4CAF50;
+}
+
+button.agregar-departamento:active {
+    background-color: #4CAF50;
+}
+
+/* Estilo para posicionar el botón en la esquina superior derecha */
+.button-container {
+    position: relative;
+    margin-bottom: 20px;  /* Ajusta el margen inferior para mover el botón hacia arriba */
+}
+
+.button-container button {
+    position: absolute;
+    top: -45px;
+    right: 40px;
+}
+
+button.ocultar-formulario {
+    background-color: #dc3545;
+}
+
+button.ocultar-formulario:hover {
+    background-color: #c82333;
+}
+
+button.ocultar-formulario:active {
+    background-color: #bd2130;
+}
+
+/* Estilo para la galería de departamentos */
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.departamento-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 300px;
+    overflow: hidden;
+}
+
+.departamento-card:hover {
+    transform: scale(1.05);
+}
+
+.departamento-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.departamento-imagen {
+    width: 100%;
+    height: 200px; /* Ajusta la altura según lo necesario */
+    background-size: cover; /* Ajusta la imagen dentro del contenedor */
+    background-position: center;
+    border-bottom: 1px solid #ddd; /* Borde opcional para separar la imagen del contenido */
+}
+
+.departamento-content {
+    padding: 20px;
+}
+
+.departamento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.departamento-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.update-button, .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.departamento-content h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.departamento-content p {
+    color: #555;
+    margin-top: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em; /* Ajusta el tamaño de la fuente según sea necesario */
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}

@@ -5,7 +5,7 @@ import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import * as CategoriaService from '../Services/CategoriaService';
 import * as CategoriaServiceCreate from '../Services/CategoriaServiceCreate';
 
-export const CategoriasGaleria = ({ onEditCategoria }) => {
+export const CategoriasGaleria = ({ onEditCategoria  }) => {
     const [categorias, setCategorias] = useState([]);
     const navigate = useNavigate();
 
