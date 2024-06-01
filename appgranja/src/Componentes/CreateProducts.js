@@ -55,7 +55,7 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="producto-form" onSubmit={handleSubmit}>
             <div>
                 <label>Nombre:</label>
                 <input

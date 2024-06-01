@@ -27,10 +27,12 @@ const CreateCategorias = ({ onCategoriaGuardada }) => {
             setCategoria({ id: '', nombre: '', descripcion: '' });
             if (onCategoriaGuardada) {
                 onCategoriaGuardada(); // Aquí llamamos a la función para actualizar la lista de categorías
+                
             }
         } catch (error) {
             console.error('Error creating category:', error);
         }
+       
     };
 
     return (

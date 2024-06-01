@@ -40,7 +40,7 @@ button.ocultar-formulario:active {
 
 /* Estilo para el botón de agregar producto */
 button.agregar-departamento {
-    background-color: #4CAF50;
+    background-color: #126b27;
 }
 
 button.agregar-departamento:hover {
@@ -48,7 +48,7 @@ button.agregar-departamento:hover {
 }
 
 button.agregar-departamento:active {
-    background-color: #4CAF50;
+    background-color: #126b27;
 }
 
 /* Estilo para posicionar el botón en la esquina superior derecha */

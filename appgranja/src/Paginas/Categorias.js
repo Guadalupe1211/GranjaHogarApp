@@ -11,7 +11,7 @@ const CategoriasPage = () => {
     
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [categorias]);
 
     const fetchData = async () => {
         try {
@@ -24,6 +24,11 @@ const CategoriasPage = () => {
 
     const toggleFormVisibility = () => {
         setShowForm(prevShowForm => !prevShowForm);
+        setCategoriaSeleccionada ({
+            id: '',
+            nombre: '',
+            descripcion: ''
+        })
     };
 
     const handleCategoriaGuardada = async (categoriaActualizada) => {
@@ -32,6 +37,11 @@ const CategoriasPage = () => {
             setCategorias(prevCategorias =>
                 prevCategorias.map(cat => (cat.id === categoriaActualizada.id ? categoriaActualizada : cat))
             );
+            setCategoriaSeleccionada ({
+                id: '',
+                nombre: '',
+                descripcion: ''
+            })
         } else {
             fetchData();
         }
@@ -48,10 +58,22 @@ const CategoriasPage = () => {
                 const updatedCategoria = await CategoriaServiceCreate.updateCategoria(id, aux);
                 alert('Categoría actualizada correctamente');
                 handleCategoriaGuardada(updatedCategoria);
+                setCategoriaSeleccionada ({
+                    id: '',
+                    nombre: '',
+                    descripcion: ''
+                })
             } else {
                 const nuevaCategoria = await CategoriaServiceCreate.createCategoria(categoriaSeleccionada);
                 alert('Categoría creada correctamente');
+                setShowForm(false);
                 setCategorias([...categorias, nuevaCategoria]);
+                setCategoriaSeleccionada ({
+                    id: '',
+                    nombre: '',
+                    descripcion: ''
+                })
+               
             }
             
         } catch (error) {
@@ -74,10 +96,10 @@ const CategoriasPage = () => {
 
     return (
         <div>
-            <h1>Categorías</h1>
+            <h1 className="page-header">Categorías</h1>
             <div className="button-container">
             <button
-                    className={showForm ? "ocultar-formulario" : "agregar-departamento"}
+                    className={showForm ? "ocultar-formulario" : "agregar-categoria"}
                     onClick={toggleFormVisibility}
                 >
                     {showForm ? 'Ocultar Formulario' : 'Agregar Categoría'}

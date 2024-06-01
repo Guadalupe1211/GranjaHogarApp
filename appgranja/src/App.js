@@ -1,18 +1,17 @@
 //import logo from './logo.svg';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
 import CategoriasPage from './Paginas/Categorias';
 import ProductosPorCategoria from './Componentes/ProductosPorCategoria';
 import { Productos } from './Paginas/Productos';
 import {ProductosPage} from './Paginas/Productos';
 import { InventarioDepartamento } from './Componentes/InventarioDepartamento';
 import { InventarioDepartamentos } from './Paginas/InventarioDepartamentos';
-
 import {Home} from './Paginas/Home'
 import { BarraNavegacion } from './Componentes/BarraNavegacion';
 import DepartamentosPage from './Paginas/Departamentos';
 import MovimientoInventarioPage from './Paginas/MovimientoInventario';
+import './App.css';
 
 function App() {
   return (

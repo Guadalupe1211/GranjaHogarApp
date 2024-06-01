@@ -20,7 +20,7 @@ export const CategoriasGaleria = ({ onEditCategoria  }) => {
         };
 
         fetchData();
-    }, []);
+    }, [categorias]);
 
     const handleUpdate = (categoria) => {
         onEditCategoria(categoria);
