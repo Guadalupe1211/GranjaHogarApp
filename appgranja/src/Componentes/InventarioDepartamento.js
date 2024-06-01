@@ -2,22 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { updateInventarioDepartamento, deleteInventarioDepartamento } from '../Services/InventarioDepartamento';
 import { getDepartamento } from '../Services/DepartamentoServices';
 import { useParams } from 'react-router-dom';
-import { useGetInventarioDepartamento } from '../Hooks/InventarioDepartamentos';
+import { useGetInventarioDepartamento } from '../Hooks/InventarioDepartamento';
+
 
 
 
 export const InventarioDepartamento = () => {
     const depId = useParams()
     const DbInvDep = useGetInventarioDepartamento(parseInt(depId.id))
-    const [invDep, setInvDep] = useState(DbInvDep)
+    const [invDep, setInvDep] = useState([
+        {
+            id:0,
+            departamento: 0,
+            producto: { nombre: "loading" }
+        }
+    ])
     const [NombreDepartamento, setNombreDepartamento] = useState("nombre")
     const [refresh, setRefresh] = useState(false)
-    console.log(invDep)
+    
+    useEffect(() => {
+        if(DbInvDep){
+        setInvDep(DbInvDep)
+        }
+    }, [DbInvDep])
 
     useEffect(() => {
+        
         const callNombreDep = async () => {
+            try{
+
+            if(invDep[0].departamento!==0){
             const { nombre } = await getDepartamento(invDep[0].departamento)
             setNombreDepartamento(nombre)
+            }
+            }catch(error){
+                console.log("Loading")
+            }
         }
         callNombreDep()
         setRefresh(!refresh)

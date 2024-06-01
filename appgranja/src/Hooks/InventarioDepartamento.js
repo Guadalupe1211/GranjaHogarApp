@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 export const useGetInventarioDepartamento = (depId) => {
     const [DBInventarioDepartamentos, setDBInventarioDepartamentos] = useState([])
-    const [invDep, setInvDep] = useState([])
-    console.log("hook: "+invDep)
+    const [invDep, setInvDep] = useState(null)
+    
     useEffect(() => {
         const getData = async () => {
             const data = await getInventarioDepartamento()

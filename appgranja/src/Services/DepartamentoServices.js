@@ -75,7 +75,7 @@ export const getDepartamento = async (id) => {
         const response = await instance.get(`/${id}`);
         return response.data;  // Return the get data
     } catch (error) {
-        console.error(`Error getting GetDepartamento ${id}:`, error);
-        throw error;
+        console.log(`Error getting GetDepartamento ${id}:`);
+        //throw error;
     }
 };
