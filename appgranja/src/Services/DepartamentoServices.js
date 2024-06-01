@@ -69,3 +69,13 @@ export const deleteDepartamento = async (id) => {
         throw error;
     }
 };
+
+export const getDepartamento = async (id) => {
+    try {
+        const response = await instance.get(`/${id}`);
+        return response.data;  // Return the get data
+    } catch (error) {
+        console.error(`Error getting GetDepartamento ${id}:`, error);
+        throw error;
+    }
+};
