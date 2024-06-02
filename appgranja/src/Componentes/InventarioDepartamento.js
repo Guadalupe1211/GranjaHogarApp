@@ -10,32 +10,32 @@ import { useGetInventarioDepartamento } from '../Hooks/InventarioDepartamento';
 export const InventarioDepartamento = () => {
     const depId = useParams()
     const DbInvDep = useGetInventarioDepartamento(parseInt(depId.id))
+    
     const [invDep, setInvDep] = useState([
         {
-            id:0,
+            id: 0,
             departamento: 0,
             producto: { nombre: "loading" }
         }
     ])
     const [NombreDepartamento, setNombreDepartamento] = useState("nombre")
     const [refresh, setRefresh] = useState(false)
-    
+
     useEffect(() => {
-        if(DbInvDep){
-        setInvDep(DbInvDep)
+        if (DbInvDep) {
+            setInvDep(DbInvDep)
         }
     }, [DbInvDep])
 
     useEffect(() => {
-        
-        const callNombreDep = async () => {
-            try{
 
-            if(invDep[0].departamento!==0){
-            const { nombre } = await getDepartamento(invDep[0].departamento)
-            setNombreDepartamento(nombre)
-            }
-            }catch(error){
+        const callNombreDep = async () => {
+            try {
+
+                    const { nombre } = await getDepartamento(parseInt(depId.id))
+                    setNombreDepartamento(nombre)
+                
+            } catch (error) {
                 console.log("Loading")
             }
         }
@@ -81,8 +81,24 @@ export const InventarioDepartamento = () => {
 
 
     return (
-        <>
-            <h1 className='header-dpto'>{NombreDepartamento}</h1>
+<>
+        {
+            invDep[0].id == 0 ? (
+                <>
+                <h1>El departamento {NombreDepartamento} no tiene productos aun...</h1>
+                </>
+            ) : (
+                <>
+                
+                <div className='header-container-deptoinv'>
+                <h1 className = 'header-dpto'>{ NombreDepartamento }</h1>
+                <button className="guardar inv-dep" onClick={() => {
+                handleGuardar()
+                setRefresh(!refresh)
+            }}>
+                Guardar
+            </button>
+            </div>
             <div className='caja-dptoinv'>
 
                 {invDep.map((dep) => (
@@ -107,12 +123,9 @@ export const InventarioDepartamento = () => {
                     </div>
                 ))}
             </div>
-            <button className="guardar inv-dep" onClick={() => {
-                handleGuardar()
-                setRefresh(!refresh)
-            }}>
-                Guardar
-            </button>
+
         </>
+    )}
+    </>
     )
 }
