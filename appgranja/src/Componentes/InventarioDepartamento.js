@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { updateInventarioDepartamento, deleteInventarioDepartamento } from '../Services/InventarioDepartamento';
+import { updateInventarioDepartamento, deleteInventarioDepartamento, getInventarioDepartamento } from '../Services/InventarioDepartamento';
 import { getDepartamento } from '../Services/DepartamentoServices';
 import { useParams } from 'react-router-dom';
-import { useGetInventarioDepartamento } from '../Hooks/InventarioDepartamento';
+
 
 
 
 
 export const InventarioDepartamento = () => {
     const depId = useParams()
-    const DbInvDep = useGetInventarioDepartamento(parseInt(depId.id))
+    
     
     const [invDep, setInvDep] = useState([
         {
@@ -18,14 +18,44 @@ export const InventarioDepartamento = () => {
             producto: { nombre: "loading" }
         }
     ])
+
+    const [DbInvDep, setDBInvDep]=useState([
+        {
+            id: 0,
+            departamento: 0,
+            producto: { nombre: "loading" }
+        }
+    ])
+
+    const [lastUpdate, setLastUpdate] = useState(Date.now())
     const [NombreDepartamento, setNombreDepartamento] = useState("nombre")
-    const [refresh, setRefresh] = useState(false)
+    
 
     useEffect(() => {
-        if (DbInvDep) {
-            setInvDep(DbInvDep)
-        }
-    }, [DbInvDep])
+        const getData = async () => {
+  
+            const data = await getInventarioDepartamento()
+            const groupedData = data.reduce((acc, curr) => {
+                if (!acc[curr.departamento]) {
+                    acc[curr.departamento] = [];
+                }
+                acc[curr.departamento].push(curr);
+                return acc;
+            }, {});
+            
+
+            Object.keys(groupedData).forEach((key) => {
+                if(groupedData[key].find(d => d.departamento === parseInt(depId.id))){
+                const data = groupedData[key]
+                setDBInvDep(data)
+                setInvDep(data)
+            }
+        })}
+        getData();    
+
+
+    }, [lastUpdate])
+  
 
     useEffect(() => {
 
@@ -40,8 +70,7 @@ export const InventarioDepartamento = () => {
             }
         }
         callNombreDep()
-        setRefresh(!refresh)
-    }, [invDep])
+    }, [])
 
     const handleIncrementar = (id) => {
         setInvDep(invDep.map(dep =>
@@ -73,18 +102,24 @@ export const InventarioDepartamento = () => {
             if (item.data.cantidad_en_stock === 0) {
                 // Send a toast here
                 await deleteInventarioDepartamento(item.id);
+                setLastUpdate(Date.now())
             } else {
                 await updateInventarioDepartamento(item.id, item.data);
+                setLastUpdate(Date.now())
             }
         }
+
     }
 
 
     return (
 <>
+{console.log(invDep[0].id)}
         {
-            invDep[0].id == 0 ? (
+           
+            invDep[0].id==0 ? (
                 <>
+                
                 <h1>El departamento {NombreDepartamento} no tiene productos aun...</h1>
                 </>
             ) : (
@@ -94,7 +129,7 @@ export const InventarioDepartamento = () => {
                 <h1 className = 'header-dpto'>{ NombreDepartamento }</h1>
                 <button className="guardar inv-dep" onClick={() => {
                 handleGuardar()
-                setRefresh(!refresh)
+                
             }}>
                 Guardar
             </button>
