@@ -5,8 +5,6 @@ import { useParams } from 'react-router-dom';
 
 
 
-
-
 export const InventarioDepartamento = () => {
     const depId = useParams()
     

@@ -13,6 +13,7 @@ const MovimientoInventarioForm = ({ onMovimientoGuardado }) => {
         es_entrada: false,
         departamento: '',
     });
+    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
         fetchProductos();
@@ -57,67 +58,84 @@ const MovimientoInventarioForm = ({ onMovimientoGuardado }) => {
                 es_entrada: false,
                 departamento: '',
             });
+            setShowForm(false);
         } catch (error) {
             console.error('Error creating movimiento:', error);
         }
     };
 
+    const toggleFormVisibility = () => {
+        setShowForm(prevShowForm => !prevShowForm);
+    };
+
     return (
-        <form onSubmit={handleSubmit} className="movimiento-form">
-            <div>
-                <label>Producto:</label>
-                <select
-                    name="producto_id"
-                    value={movimiento.producto_id}
-                    onChange={handleChange}
-                    required
+        <div>
+            <div className="button-container">
+                <button
+                    className={showForm ? "ocultar-formulario" : "agregar-movimiento"}
+                    onClick={toggleFormVisibility}
                 >
-                    <option value="">Seleccione un producto</option>
-                    {productos.map((producto) => (
-                        <option key={producto.id} value={producto.id}>
-                            {producto.nombre}
-                        </option>
-                    ))}
-                </select>
+                    {showForm ? 'Ocultar Formulario' : 'Agregar Movimiento'}
+                </button>
             </div>
-            <div>
-                <label>Cantidad:</label>
-                <input
-                    type="number"
-                    name="cantidad"
-                    value={movimiento.cantidad}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            <div className='checkbox-container'>
-                <label>Entrada a inventario?</label>
-                <input
-                    type="checkbox"
-                    name="es_entrada"
-                    checked={movimiento.es_entrada}
-                    onChange={() => setMovimiento({ ...movimiento, es_entrada: !movimiento.es_entrada })}
-                />
-            </div>
-            {!movimiento.es_entrada && (
-                <div>
-                    <label>Departamento:</label>
-                    <select
-                        name="departamento"
-                        value={movimiento.departamento}
-                        onChange={handleChange}
-                    >
-                        <option value="">Seleccione un departamento</option>
-                        {departamentos.map((departamento) => (
-                            <option key={departamento.id} value={departamento.id}>
-                                {departamento.nombre}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+            {showForm && (
+                <form onSubmit={handleSubmit} className="movimiento-form">
+                    <div>
+                        <label>Producto:</label>
+                        <select
+                            name="producto_id"
+                            value={movimiento.producto_id}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Seleccione un producto</option>
+                            {productos.map((producto) => (
+                                <option key={producto.id} value={producto.id}>
+                                    {producto.nombre}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Cantidad:</label>
+                        <input
+                            type="number"
+                            name="cantidad"
+                            value={movimiento.cantidad}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className='checkbox-container'>
+                        <label>Entrada a inventario?</label>
+                        <input
+                            type="checkbox"
+                            name="es_entrada"
+                            checked={movimiento.es_entrada}
+                            onChange={() => setMovimiento({ ...movimiento, es_entrada: !movimiento.es_entrada })}
+                        />
+                    </div>
+                    {!movimiento.es_entrada && (
+                        <div>
+                            <label>Departamento:</label>
+                            <select
+                                name="departamento"
+                                value={movimiento.departamento}
+                                onChange={handleChange}
+                            >
+                                <option value="">Seleccione un departamento</option>
+                                {departamentos.map((departamento) => (
+                                    <option key={departamento.id} value={departamento.id}>
+                                        {departamento.nombre}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    )}
+                    <button type="submit">Realizar Movimiento</button>
+                </form>
             )}
-            <button type="submit">Realizar Movimiento</button>
-        </form>
+        </div>
     );
 };
 
