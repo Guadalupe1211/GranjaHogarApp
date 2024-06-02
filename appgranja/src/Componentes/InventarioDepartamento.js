@@ -1,31 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { getInventarioDepartamento, updateInventarioDepartamento, deleteInventarioDepartamento } from '../Services/InventarioDepartamento';
-import { getDepartamento } from '../Services/Departamento';
+import { updateInventarioDepartamento, deleteInventarioDepartamento } from '../Services/InventarioDepartamento';
+import { getDepartamento } from '../Services/DepartamentoServices';
+import { useParams } from 'react-router-dom';
+import { useGetInventarioDepartamento } from '../Hooks/InventarioDepartamento';
 
-export const InventarioDepartamento = ({ Departamentos }) => {
-    const [departamentos, setDepartamento] = useState(Departamentos)
+
+
+
+export const InventarioDepartamento = () => {
+    const depId = useParams()
+    const DbInvDep = useGetInventarioDepartamento(parseInt(depId.id))
+    
+    const [invDep, setInvDep] = useState([
+        {
+            id: 0,
+            departamento: 0,
+            producto: { nombre: "loading" }
+        }
+    ])
     const [NombreDepartamento, setNombreDepartamento] = useState("nombre")
     const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
+        if (DbInvDep) {
+            setInvDep(DbInvDep)
+        }
+    }, [DbInvDep])
+
+    useEffect(() => {
+
         const callNombreDep = async () => {
-            const { nombre } = await getDepartamento(departamentos[0].departamento)
-            setNombreDepartamento(nombre)
+            try {
+
+                    const { nombre } = await getDepartamento(parseInt(depId.id))
+                    setNombreDepartamento(nombre)
+                
+            } catch (error) {
+                console.log("Loading")
+            }
         }
         callNombreDep()
         setRefresh(!refresh)
-    }, [departamentos])
+    }, [invDep])
 
     const handleIncrementar = (id) => {
-        setDepartamento(departamentos.map(dep =>
-            dep.id === id && dep.cantidad_en_stock < Departamentos.find(d => d.id === id).cantidad_en_stock
+        setInvDep(invDep.map(dep =>
+            dep.id === id && dep.cantidad_en_stock < DbInvDep.find(d => d.id === id).cantidad_en_stock
                 ? { ...dep, cantidad_en_stock: dep.cantidad_en_stock + 1 }
                 : dep
         ))
     }
 
     const handleDecrementar = (id) => {
-        setDepartamento(departamentos.map(dep =>
+        setInvDep(invDep.map(dep =>
             dep.id === id && dep.cantidad_en_stock > 0
                 ? { ...dep, cantidad_en_stock: dep.cantidad_en_stock - 1 }
                 : dep
@@ -33,7 +60,7 @@ export const InventarioDepartamento = ({ Departamentos }) => {
     }
 
     const handleGuardar = async () => {
-        const dataUpdates = departamentos.map(dep => ({
+        const dataUpdates = invDep.map(dep => ({
             id: dep.id,
             data: {
                 producto_id: dep.producto.id,
@@ -54,11 +81,27 @@ export const InventarioDepartamento = ({ Departamentos }) => {
 
 
     return (
-        <>
-            <h1 className='header-dpto'>{NombreDepartamento}</h1>
+<>
+        {
+            invDep[0].id == 0 ? (
+                <>
+                <h1>El departamento {NombreDepartamento} no tiene productos aun...</h1>
+                </>
+            ) : (
+                <>
+                
+                <div className='header-container-deptoinv'>
+                <h1 className = 'header-dpto'>{ NombreDepartamento }</h1>
+                <button className="guardar inv-dep" onClick={() => {
+                handleGuardar()
+                setRefresh(!refresh)
+            }}>
+                Guardar
+            </button>
+            </div>
             <div className='caja-dptoinv'>
 
-                {departamentos.map((dep) => (
+                {invDep.map((dep) => (
                     <div className='dptoinv' key={dep.id}>
                         <div className='img-inv'>
                             <img src="\img_dptoinv.jpg" alt="imagen inventario" width="200" height="150" />
@@ -80,12 +123,9 @@ export const InventarioDepartamento = ({ Departamentos }) => {
                     </div>
                 ))}
             </div>
-            <button className="guardar inv-dep" onClick={() => {
-                handleGuardar()
-                setRefresh(!refresh)
-            }}>
-                Guardar
-            </button>
+
         </>
+    )}
+    </>
     )
 }

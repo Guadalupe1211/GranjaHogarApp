@@ -2,8 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import '../Departamentos.css';
+import { useNavigate } from 'react-router-dom';
 
 const DepartamentosTabla = ({ departamentos, onEditDepartamento, onDeleteDepartamento }) => {
+    const navigate = useNavigate()
     const handleUpdate = (departamento) => {
         onEditDepartamento(departamento);
     };
@@ -12,11 +14,17 @@ const DepartamentosTabla = ({ departamentos, onEditDepartamento, onDeleteDeparta
         onDeleteDepartamento(id);
     };
 
+    const handleCardCLick = (id)=> {
+        
+        navigate(`/inventario-departamento/${id}`)
+
+    }
+
     return (
         <div>
             <div className="galeria">
                 {departamentos.map((departamento) => (
-                    <div key={departamento.id} className="departamento-card">
+                    <div key={departamento.id} className="departamento-card" onClick={()=>handleCardCLick(departamento.id)}>
                         <div className="departamento-imagen" style={{ backgroundImage: `url(${departamento.imagen})` }}></div>
                         <div className="departamento-content">
                             <div className="departamento-header">

@@ -6,7 +6,6 @@ import ProductosPorCategoria from './Componentes/ProductosPorCategoria';
 import { Productos } from './Paginas/Productos';
 import {ProductosPage} from './Paginas/Productos';
 import { InventarioDepartamento } from './Componentes/InventarioDepartamento';
-import { InventarioDepartamentos } from './Paginas/InventarioDepartamentos';
 import {Home} from './Paginas/Home'
 import { BarraNavegacion } from './Componentes/BarraNavegacion';
 import DepartamentosPage from './Paginas/Departamentos';
@@ -40,7 +39,7 @@ function App() {
         "departamento": 3,
         "cantidad_en_stock": 0
     }]}/>}/> */}
-        <Route path="inventario-departamentos" element={<InventarioDepartamentos/>}/>
+        <Route path="inventario-departamento/:id" element={<InventarioDepartamento/>}/>
         </Routes>
       </Router>
     </>
