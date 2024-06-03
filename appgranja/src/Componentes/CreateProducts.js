@@ -88,7 +88,7 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
             <div>
             <label>Estado:</label>
                 <select
-                    name="estado"
+                    name="procedencia"
                     value={producto.estado}
                     onChange={handleChange}
                     required
