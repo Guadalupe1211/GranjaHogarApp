@@ -14,7 +14,7 @@ export const Product = ({ products, onDelete, onUpdate }) => {
                             <h3>{product.nombre}</h3>
                             <h6>{product.fecha_de_caducidad}</h6>
                             <p>{product.descripcion}</p>
-                            <h6>${product.precio}</h6>
+                            <h6>{product.procedencia}</h6>
                             <h6>Cantidad: {product.cantidad_en_stock}</h6>
                         </div>
                     </div>

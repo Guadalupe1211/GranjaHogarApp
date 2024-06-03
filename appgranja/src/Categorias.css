@@ -13,18 +13,6 @@ button {
     margin: 10px 0;
   }
   
-  /* Efecto al pasar el cursor sobre el botón */
-  button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Efecto al hacer clic en el botón */
-  button:active {
-    background-color: #004494;
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
-  }
-  
   /* Estilo para el botón de ocultar formulario */
   button.ocultar-formulario {
     background-color: #dc3545;
@@ -39,27 +27,29 @@ button {
   }
   
   /* Estilo para el botón de agregar producto */
-  button.agregar-producto {
-    background-color: #28a745;
+  button.agregar-categoria {
+    background-color: #126b27;
   }
   
-  button.agregar-producto:hover {
-    background-color: #218838;
+  button.agregar-categoria:hover {
+    background-color: #4CAF50;
   }
   
-  button.agregar-producto:active {
-    background-color: #1e7e34;
+  button.agregar-categoria:active {
+    background-color: #126b27;
   }
   
   /* Estilo para posicionar el botón en la esquina superior derecha */
   .button-container {
     position: relative;
+    top: 40px;
+    padding-bottom: 50px;
   }
   .button-container button {
     position: absolute;
-    top: -45px;
     right: 40px;
   }
+  
   button.ocultar-formulario {
     background-color: #dc3545;
   }
@@ -72,4 +62,10 @@ button {
     background-color: #bd2130;
   }
   
+  .page-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+  }
+
   

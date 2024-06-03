@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProducts, updateProduct, deleteProduct } from '../Services/ProductsServices';
 import { Product } from '../Componentes/Product';
 import CreateProducts from '../Componentes/CreateProducts';
-import '../App.css';
+import '../Productos.css';
 
 export const Productos = () => {
     const [data, setData] = useState([]);

@@ -1,0 +1,60 @@
+/*Design for home page*/
+.Home{
+    display:flex;
+    flex-direction: column;
+    padding: 4% 20%;
+    background-size: cover;
+    height: 100%;
+    min-height: 560px;
+    }
+  
+  .Home p{
+    padding: 10px;
+  }
+  
+  .Home li{
+    padding: 4px;
+  }
+
+
+/*Barra navegacion desig*/
+.navbar-custom {
+    background-color: #242526; /* Dark gray background */
+    padding: 1rem; /* Add some padding for spacing */
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-custom-banner{
+  color: #ffffff;
+  padding: 0.5rem 1rem; /* Add padding around the links */
+  padding-right: 5rem;
+}
+
+.navbar-custom li{
+  display: inline-block;
+}
+
+/* Style for navigation links */
+.navbar-custom a {
+    color: #ffffff; /* White text color */
+    text-decoration: none; /* Remove underlines */
+    padding: 0.5rem 1rem; /* Add padding around the links */
+    display: inline-block; /* Display as block elements */
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+/* Hover effect for navigation links */
+.navbar-custom a:hover {
+    color: #ffcc00; /* Yellow text color on hover */
+}
+
+/* Active link style (when the page is active) */
+.navbar-custom a.active {
+    font-weight: bold; /* Make the active link bold */
+}
+
+/* Spacing between navigation items */
+.navbar-custom li {
+    margin-right: 1rem; /* Adjust spacing as needed */
+}

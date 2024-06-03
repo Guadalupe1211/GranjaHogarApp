@@ -1,0 +1,194 @@
+/* Banner design for products components */
+.cardMetadata {
+    display: flex;
+    flex-direction: column;
+  }
+  .cardBlock{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .cardContainerButtons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .cardContainerButtons button{
+    background-color: transparent;
+    border-color: transparent;
+    scale: 1.2;
+  }
+  
+  .cardContainerButtons button:hover{
+    transform: scale(1.5);
+  }
+  
+  .cardContainerButtons button:active{
+    transform: scale(1.05);
+  }
+  
+  .card{
+    display: flex;
+    justify-content:space-between;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+    cursor: pointer;
+    margin: 20px 300px 20px 300px;
+    width: 800px;
+  }
+  
+  .card:hover{
+       transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  
+  .card h3{
+    font-weight: 600;
+  }
+  
+  .cardBlock img{
+    top: 10px;
+    left: 15px;
+    max-height: 80px;
+  }
+  
+/* Botón base */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  
+}
+
+  
+  /* Estilo para el botón de agregar producto */
+  button.agregar-producto {
+    background-color: #126b27;
+  }
+  
+  button.agregar-producto:hover {
+    background-color: #4CAF50;
+  }
+  
+  button.agregar-producto:active {
+    background-color: #126b27;
+  }
+  
+  /* Estilo para posicionar el botón en la esquina superior derecha */
+ 
+  .button-container button {
+    position:absolute;
+    margin-top: 25px;
+    
+  }
+  
+  /* Estilos para los botones en Product.js */
+  .update-button, .delete-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .update-button {
+    background-color: #4CAF50; /* Verde */
+    color: rgb(0, 0, 0);
+  }
+  
+  .update-button:hover {
+    background-color: #45a049;
+  }
+  
+  .delete-button {
+    background-color: #f44336; /* Rojo */
+    color: rgb(0, 0, 0);
+  }
+  
+  .delete-button:hover {
+    background-color: #da190b;
+  }
+  
+  
+  .titulo-productos {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+  }
+  
+  /* Base styles for the form */
+
+  form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Adjust width as necessary */
+    margin: 40px auto;
+    font-family: 'Arial', sans-serif;
+  }
+  /* Style for form elements */
+  form div {
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  form input[type="text"],
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+  }
+  
+
+/* Styling for buttons */
+
+form button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px; /* Space between buttons */
+}
+  form button[type="submit"] {
+    background-color: #2d2d2d;
+    color: white;
+  }
+  
+  form button[type="button"] { /* Delete button styling */
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  form button:hover {
+    opacity: 0.9;
+  }
+  
+  .producto-form input,
+.producto-form select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}

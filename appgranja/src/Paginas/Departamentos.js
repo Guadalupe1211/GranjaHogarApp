@@ -82,7 +82,7 @@ const DepartamentosPage = () => {
 
     return (
         <div>
-            <h1>Departamentos</h1>
+            <h1 className="page-header">Departamentos</h1>
             <div className="button-container">
                 <button
                     className={showForm ? "ocultar-formulario" : "agregar-departamento"}

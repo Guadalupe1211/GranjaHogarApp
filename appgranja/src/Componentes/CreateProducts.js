@@ -55,7 +55,7 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="producto-form" onSubmit={handleSubmit}>
             <div>
                 <label>Nombre:</label>
                 <input
@@ -88,7 +88,7 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
             <div>
             <label>Estado:</label>
                 <select
-                    name="estado"
+                    name="procedencia"
                     value={producto.estado}
                     onChange={handleChange}
                     required

@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../BarraNavegacion.css';
 export const Home = () =>{
     return(
     <div className= "Home" style={{ backgroundImage: `url("/homeBackground.jpg")` }}> 
