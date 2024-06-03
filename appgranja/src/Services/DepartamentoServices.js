@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/departamento';
+const API_URL = '/api/departamento';
 const DEFAULT_IMAGE_URL = 'https://i.pinimg.com/736x/64/46/a5/6446a512dd4b5d0a2c67fe5ebfb0775f.jpg';
 
 const instance = axios.create({
@@ -11,7 +11,7 @@ const instance = axios.create({
 // Función para obtener todos los departamentos
 export const getDepartamentos = async () => {
     try {
-        const response = await instance.get(API_URL);
+        const response = await instance.get();
         const departamentos = response.data.map(departamento => ({
             ...departamento,
             imagen: departamento.imagen || DEFAULT_IMAGE_URL

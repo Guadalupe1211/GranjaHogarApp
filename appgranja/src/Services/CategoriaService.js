@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Configura la URL base de tu API
-const API_URL = 'http://localhost:8000/api/categorias';
+const API_URL = '/api/categorias';
 
 // Crear una instancia de Axios con la configuración base
 const instance = axios.create({
@@ -17,7 +17,7 @@ const DEFAULT_IMAGE_URL = 'https://media.istockphoto.com/id/1364776788/es/vector
 export const getCategorias = async () => {
     
     try {
-        const response = await instance.get(API_URL);
+        const response = await instance.get();
         const categorias = response.data.map(categoria => ({
             ...categoria,
             

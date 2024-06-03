@@ -1,5 +1,5 @@
 
-const API_URL = 'http://localhost:8000/api/movimientos-inventario/';
+const API_URL = '/api/movimientos-inventario/';
 
 export const getMovimientos = async () => {
     const response = await fetch(`${API_URL}`);

@@ -6,3 +6,5 @@ GranjaHogar/pyvenv.cfg
 SistemaInventario/sqlite3.exe
 SistemaInventario/sqldiff.exe
 SistemaInventario/sqlite3_analyzer.exe
+venv
+*log.txt

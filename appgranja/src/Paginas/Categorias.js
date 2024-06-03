@@ -8,10 +8,12 @@ const CategoriasPage = () => {
     const [showForm, setShowForm] = useState(false);
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState({ id: '', nombre: '', descripcion: '' });
     const [categorias, setCategorias] = useState([]);
-    
+    const [lastUpdate, setLastUpdate] = useState(Date.now())
+
     useEffect(() => {
         fetchData();
-    }, [categorias]);
+	    
+    }, [lastUpdate]);
 
     const fetchData = async () => {
         try {
@@ -45,6 +47,7 @@ const CategoriasPage = () => {
         } else {
             fetchData();
         }
+	    setLastUpdate(Date.now())
     };
 
     const handleSubmit = async (event) => {
@@ -63,6 +66,7 @@ const CategoriasPage = () => {
                     nombre: '',
                     descripcion: ''
                 })
+		    setLastUpdate(Date.now())
             } else {
                 const nuevaCategoria = await CategoriaServiceCreate.createCategoria(categoriaSeleccionada);
                 alert('Categoría creada correctamente');
@@ -73,12 +77,13 @@ const CategoriasPage = () => {
                     nombre: '',
                     descripcion: ''
                 })
-               
+              setLastUpdate(Date.now()) 
             }
             
         } catch (error) {
             console.error('Error al guardar la categoría:', error);
         }
+	    setLastUpdate(Date.now())
     };
 
     const handleChange = (event) => {
@@ -92,6 +97,7 @@ const CategoriasPage = () => {
     const handleEditCategoria = (categoria) => {
         setCategoriaSeleccionada(categoria);
         setShowForm(true);
+	    setLastUpdate(Date.now())
     };
 
     return (
@@ -129,7 +135,7 @@ const CategoriasPage = () => {
                     <button type="submit">{categoriaSeleccionada.id ? 'Actualizar Categoría' : 'Crear Categoría'}</button>
                 </form>
             )}
-            <CategoriasGaleria onEditCategoria={handleEditCategoria} />
+            <CategoriasGaleria onEditCategoria={handleEditCategoria} updated={lastUpdate}/>
         </div>
     );
 };

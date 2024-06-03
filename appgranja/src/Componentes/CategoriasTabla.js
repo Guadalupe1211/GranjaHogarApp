@@ -5,9 +5,10 @@ import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import * as CategoriaService from '../Services/CategoriaService';
 import * as CategoriaServiceCreate from '../Services/CategoriaServiceCreate';
 
-export const CategoriasGaleria = ({ onEditCategoria  }) => {
+export const CategoriasGaleria = ({ onEditCategoria,updated  }) => {
     const [categorias, setCategorias] = useState([]);
     const navigate = useNavigate();
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,12 +19,13 @@ export const CategoriasGaleria = ({ onEditCategoria  }) => {
                 console.error('Error al obtener las categorías:', error);
             }
         };
-
+	console.log("fetching data")
         fetchData();
-    }, [categorias]);
+    }, [lastUpdate,updated]);
 
     const handleUpdate = (categoria) => {
         onEditCategoria(categoria);
+	setLastUpdate(Date.now())
     };
 
     const handleDelete = async (id) => {
@@ -34,6 +36,7 @@ export const CategoriasGaleria = ({ onEditCategoria  }) => {
         } catch (error) {
             console.error('Error al eliminar la categoría:', error);
         }
+	    setLastUpdate(Date.now())
     };
 
     const handleCategoryClick = (categoriaId) => {
