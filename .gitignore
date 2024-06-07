@@ -2,7 +2,7 @@
 *.sqlite3
 pyvenv.cfg
 *.pyc
-GranjaHogar/pyvenv.cfg
+GranjaHogar
 SistemaInventario/sqlite3.exe
 SistemaInventario/sqldiff.exe
 SistemaInventario/sqlite3_analyzer.exe
