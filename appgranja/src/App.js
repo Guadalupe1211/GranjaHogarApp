@@ -11,6 +11,7 @@ import { BarraNavegacion } from './Componentes/BarraNavegacion';
 import DepartamentosPage from './Paginas/Departamentos';
 import MovimientoInventarioPage from './Paginas/MovimientoInventario';
 import './App.css';
+import './BarraNavegacion.css'
 
 function App() {
   return (
