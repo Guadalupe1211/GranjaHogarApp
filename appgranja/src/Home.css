@@ -6,7 +6,7 @@
     
 }
 .Home{
-    background-image: url("..\\public\\HomeLandscapeWallpaper.png");
+  
     /* background-position: center;
     background-attachment: fixed; Keeps the image fixed */
     display:flex;

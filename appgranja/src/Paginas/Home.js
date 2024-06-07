@@ -6,7 +6,7 @@ import { fa1, fa2, fa3, faClipboard, faArrowsToDot, faCubesStacked } from '@fort
 export const Home = () => {
     return (
         <><div class="bg-color">
-            <div className="Home">
+            <div className="Home" style = {{backgroundImage: `url("/HomeLandscapeWallpaper.png")`}}>
                 <h1>Bienvenido al sistema de inventario de la granja Hogar</h1>
 
                 {/*Boxes 1rst section*/}
