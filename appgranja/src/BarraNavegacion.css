@@ -1,8 +1,7 @@
 /*Barra navegacion desig*/
 .navbar-custom {
-    background-color: #242526; /* Dark gray background */
-    padding: 1rem; /* Add some padding for spacing */
-    display: flex;
+    background-color: #303130; /* Dark gray background */
+    /* padding: 1rem; Add some padding for spacing */
     justify-content: space-between;
 }
 
@@ -13,7 +12,9 @@
 }
 
 .navbar-custom li{
-  display: inline-block;
+    display: inline-block; 
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 /* Style for navigation links */
@@ -21,13 +22,12 @@
     color: #ffffff; /* White text color */
     text-decoration: none; /* Remove underlines */
     padding: 0.5rem 1rem; /* Add padding around the links */
-    display: inline-block; /* Display as block elements */
     transition: color 0.3s; /* Smooth color transition on hover */
 }
 
 /* Hover effect for navigation links */
 .navbar-custom a:hover {
-    color: #ffcc00; /* Yellow text color on hover */
+    color: #adec4f; /* Yellow text color on hover */
 }
 
 /* Active link style (when the page is active) */
@@ -38,4 +38,19 @@
 /* Spacing between navigation items */
 .navbar-custom li {
     margin-right: 1rem; /* Adjust spacing as needed */
+}
+
+.home-section img {
+    width: 150px;
+    margin-top: 5px;
+  }
+  
+  .home-section img:hover {
+    box-shadow: 0 0 2px 1px rgba(249, 248, 248, 0.5);
+    border-radius: 5px;
+  }
+.home-section{
+    background-color: #222322;
+    width: 100%;
+    height: 100%;
 }

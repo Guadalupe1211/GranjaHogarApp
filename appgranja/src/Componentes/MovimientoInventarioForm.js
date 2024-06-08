@@ -18,7 +18,7 @@ const MovimientoInventarioForm = ({ onMovimientoGuardado }) => {
     useEffect(() => {
         fetchProductos();
         fetchDepartamentos();
-    }, []);
+    }, [showForm]);
 
     const fetchProductos = async () => {
         try {
@@ -91,7 +91,7 @@ const MovimientoInventarioForm = ({ onMovimientoGuardado }) => {
                             <option value="">Seleccione un producto</option>
                             {productos.map((producto) => (
                                 <option key={producto.id} value={producto.id}>
-                                    {producto.nombre}
+                                    {producto.nombre} (en inventario: {producto.cantidad_en_stock})
                                 </option>
                             ))}
                         </select>

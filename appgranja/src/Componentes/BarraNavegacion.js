@@ -6,12 +6,14 @@ export const BarraNavegacion = () => {
 
     return (
         <nav className="navbar-custom"> {/* Add the custom class here */}
-            <ul>
-                <li>
+            <div className="home-section">
+                
                     <NavLink to="/" activeclassname="active">
-                        Home
+                        <img src="logoNombre.png" alt="Home"></img>
                     </NavLink>
-                </li>
+                
+                </div>
+            <ul>
                 <li>
                     <NavLink to="/Categorias" activeclassname="active">
                         Categorias
@@ -29,14 +31,13 @@ export const BarraNavegacion = () => {
                 </li>
                 <li>
                     <NavLink to="/Movimiento-inventario" activeclassname="active">
-                    Movimiento de inventario
+                        Movimiento de inventario
                     </NavLink>
-                    </li>
+                </li>
                 {/* Add more NavLink components for other navigation items */}
             </ul>
 
-            <div className="navbar-custom-banner"><strong>Inventario Granja Hogar</strong></div>
-
         </nav>
+
     );
 };

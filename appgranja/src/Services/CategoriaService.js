@@ -11,7 +11,7 @@ const instance = axios.create({
 });
 
 // URL de la imagen predeterminada
-const DEFAULT_IMAGE_URL = 'https://media.istockphoto.com/id/1364776788/es/vector/ilustraci%C3%B3n-vectorial-de-donaci%C3%B3n-de-comestibles-de-cajas-de-alimentos-contenedor-de-cart%C3%B3n.jpg?s=612x612&w=0&k=20&c=6zP-AmwNOgxyjw20P3r72gyAtQkIRlrWj3dd9NJQMVk=';
+const DEFAULT_IMAGE_URL = 'Categorias.png';
 
 // Función para obtener todas las categorías
 export const getCategorias = async () => {

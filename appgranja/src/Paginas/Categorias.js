@@ -102,7 +102,7 @@ const CategoriasPage = () => {
 
     return (
         <div>
-            <h1 className="page-header">Categorías</h1>
+            <h1 className="titulo-categorias">Categorías</h1>
             <div className="button-container">
             <button
                     className={showForm ? "ocultar-formulario" : "agregar-categoria"}
