@@ -233,4 +233,11 @@ h1 {
     float:center;
     padding-top: 20px;
   }
+  .titulo-departamentos{
+    background-color: #74c54b;
+    color: white;
+    margin-top: 0%;
+    height: 50px;
+    align-content: center;
+  }
   /*Termina CSS de Inventario Departamento*/

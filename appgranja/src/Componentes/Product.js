@@ -6,10 +6,11 @@ import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 export const Product = ({ products, onDelete, onUpdate }) => {
     return (
         <>
+        <div className="box-space">
             {products.map((product) => (
                 <div key={product.id} className="card">
                     <div className="cardBlock">
-                        <img src="https://static.vecteezy.com/system/resources/previews/003/005/280/original/chlorine-canister-icon-on-white-vector.jpg" alt="product" />
+                        <img src="Productos.png" alt="productos" />
                         <div className="cardMetadata">
                             <h3>{product.nombre}</h3>
                             <h6>{product.fecha_de_caducidad}</h6>
@@ -28,6 +29,7 @@ export const Product = ({ products, onDelete, onUpdate }) => {
                     </div>
                 </div>
             ))}
+            </div>
         </>
     );
 };

@@ -5,7 +5,7 @@ import { getDepartamentos } from '../Services/DepartamentoServices';
 
 const MovimientoInventarioList = () => {
     const [movimientos, setMovimientos] = useState([]);
-    const [nombreDepartamento, setNombreDepartamento] = useState({1:""});
+    const [nombreDepartamento, setNombreDepartamento] = useState({ 1: "" });
 
 
     useEffect(() => {
@@ -34,32 +34,34 @@ const MovimientoInventarioList = () => {
             console.error('Error fetching departamentos:', error);
         }
     };
-    
+
     return (
         <div>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Fecha</th>
-                        <th>Cantidad</th>
-                        <th>Estado</th>
-                        <th>Departamento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {movimientos.map(movimiento => (
-                        <tr key={movimiento.id}>
-                            <td>{movimiento.producto.nombre}</td>
-                            <td>{movimiento.fecha}</td>
-                            <td>{movimiento.cantidad}</td>
-                            <td>{movimiento.es_entrada ? 'Entra' : 'Sale'}</td>
-                            <td>{nombreDepartamento[movimiento.departamento] || 'N/A'}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+
+<table className='container'>
+    <thead>
+        <tr>
+            <th className='panel'>Producto</th>
+            <th className='panel'>Fecha</th>
+            <th className='panel'>Cantidad</th>
+            <th className='panel'>Estado</th>
+            <th className='panel'>Departamento</th>
+        </tr>
+    </thead>
+    <tbody className='body'>
+        {movimientos.map(movimiento => (
+            <tr key={movimiento.id}>
+                <td>{movimiento.producto.nombre}</td>
+                <td>{movimiento.fecha}</td>
+                <td>{movimiento.cantidad}</td>
+                <td>{movimiento.es_entrada ? 'Entra' : 'Sale'}</td>
+                <td>{nombreDepartamento[movimiento.departamento] || 'N/A'}</td>
+            </tr>
+        ))}
+    </tbody>
+</table>
+
+
         </div>
     );
 };

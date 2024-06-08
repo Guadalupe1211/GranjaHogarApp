@@ -12,7 +12,7 @@ const MovimientoInventarioPage = () => {
 
     return (
         <div className="movimiento-inventario-page">
-            <h1 className="page-header">Administración de Movimientos de Inventario</h1>
+            <h1 className="titulo-moviminetoInventario">Administración de Movimientos de Inventario</h1>
             <MovimientoInventarioForm onMovimientoGuardado={handleMovimientoGuardado} />
             <MovimientoInventarioList key={refresh} />
         </div>

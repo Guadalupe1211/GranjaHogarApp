@@ -8,10 +8,12 @@ body {
   text-align: center;
 }
 
-.page-header {
-  background-color: #4CAF50;
+.titulo-moviminetoInventario {
+  background-color: #74c54b;
   color: white;
-  padding: 20px;
+  margin-top: 0%;
+  height: 50px;
+  align-content: center;
 }
 
 .movimiento-form {
@@ -169,3 +171,63 @@ button.ocultar-formulario:hover {
 button.ocultar-formulario:active {
   background-color: #bd2130;
 }
+
+/*css tabla*/
+/* .container{
+  width: 800px;
+  height: auto;
+  background-color: rgb(118, 118, 118);
+  margin-left: 25%;
+  margin-top: 80px;
+  
+}
+.title{
+  background:rgb(81, 78, 78);
+  color: rgb(255, 255, 255);
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  text-align: center;
+
+}
+.panel{
+  text-align: center;
+} */
+.container {
+  width: 800px;
+  height: auto;
+  justify-content: space-between; 
+  background-color: white; /* Light blue background */
+  margin-left: 25%;
+  margin-top: 80px;
+  
+  /*box*/
+  border-radius: 4px;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  
+}
+
+.panel {
+  background-color: #303130; /* Dark blue background #74bcfe*/
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 10px;
+  flex: 1;
+  text-align: center;
+
+  /*title*/
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+.body{
+  text-align: center;
+}
+table tr:nth-child(even) {
+  background-color: #ebebeb; /* Change the color here */
+}
+
+
+
+

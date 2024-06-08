@@ -6,8 +6,6 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
     
     const [producto, setProducto] = useState(productoInicial);
     const [categorias, setCategorias] = useState([]);
-    
-
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -47,9 +45,16 @@ const ProductoForm = ({ productoInicial, onProductoGuardado }) => {
             } else {
                 await createProduct(producto);
                 alert('Producto creado correctamente');
+
             }
             onProductoGuardado();
         } catch (error) {
+           
+            if( error.response.data.nombre[0] ==="producto with this nombre already exists.")
+                {
+                    alert("El producto que intentas crear ya existe")
+                }
+            
             console.error('Error al guardar el producto:', error);
         }
     };
