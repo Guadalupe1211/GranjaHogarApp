@@ -15,7 +15,7 @@ export const Product = ({ products, onDelete, onUpdate }) => {
                 {products.map((product) => (
                     <div key={product.id} className="card">
                         <div className="cardBlock">
-                            <img src="/Productos.png" alt="productos" />
+                            <img src="/productos.png" alt="productos" />
                             <div className="cardMetadata">
                                 <h3>{product.nombre}</h3>
                                 <h6>{product.fecha_de_caducidad}</h6>
