@@ -7,7 +7,7 @@ const DepartamentosPage = () => {
     const [showForm, setShowForm] = useState(false);
     const [departamentoSeleccionado, setDepartamentoSeleccionado] = useState({ id: '', nombre: '', descripcion: '' });
     const [departamentos, setDepartamentos] = useState([]);
-
+    
     useEffect(() => {
         fetchData();
     }, []);

@@ -9,7 +9,7 @@ export const BarraNavegacion = () => {
             <div className="home-section">
                 
                     <NavLink to="/" activeclassname="active">
-                        <img src="logoNombre.png" alt="Home"></img>
+                        <img src="/logoNombre.png" alt="Home"></img>
                     </NavLink>
                 
                 </div>

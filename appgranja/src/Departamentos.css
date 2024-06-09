@@ -96,6 +96,8 @@ button.ocultar-formulario:active {
 
 .departamento-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    cursor: pointer;
 }
 
 .departamento-link {
@@ -240,4 +242,21 @@ h1 {
     height: 50px;
     align-content: center;
   }
+  
+/*Conformación de borrado de información*/
+.delete-confirmation{
+    width:fit-content;
+    background-color: rgb(161, 1, 1);
+    align-content: center;
+    text-align: center;
+    padding: 3px;
+    border-radius: 10px;
+    p{
+        color: white;
+    }
+
+    .boton-si{
+        margin-right: 40px;
+    }
+}
   /*Termina CSS de Inventario Departamento*/
