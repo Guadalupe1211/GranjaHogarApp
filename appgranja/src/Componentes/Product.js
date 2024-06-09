@@ -32,7 +32,7 @@ export const Product = ({ products, onDelete, onUpdate }) => {
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
                         </div>
-                        <div>
+                        <div className='box-confirmation'>
                             {/*confirmación*/}
                             {showConfirmation && selectedID === product.id && (
                                 <div className='delete-confirmation'>
