@@ -1,31 +1,40 @@
-import React from "react";
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import '../Home.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fa1, fa2, fa3, faClipboard, faArrowsToDot, faCubesStacked } from '@fortawesome/free-solid-svg-icons';
 
+
 export const Home = () => {
+    const navigate = useNavigate();
+    {/*link a página*/ }
+    const [paginaDestino, setPaginaDestino] = useState("")
+    useEffect(() => {
+        navigate(paginaDestino)
+    }, [paginaDestino])
+
     return (
         <><div className="bg-color">
-            <div className="Home" style = {{backgroundImage: `url("/HomeLandscapeWallpaper.png")`}}>
+            <div className="Home" style={{ backgroundImage: `url("/HomeLandscapeWallpaper.png")` }}>
                 <h1>Bienvenido al sistema de inventario de la granja Hogar</h1>
 
                 {/*Boxes 1rst section*/}
                 <div className="wrapper">
-                    <div className="box-area">
+                    <div className="box-area" onClick={() => setPaginaDestino("/Categorias")}> {/*link a página*/}
                         <div className="icon-area">
                             <i className="icon one"><FontAwesomeIcon icon={fa1} /></i>
                         </div>
                         <h6>Crear Categoría</h6>
                         <p>Organizar los productos por categorías dependiendo del uso, como herramientas, despensa, utiles escolares,etc.</p>
                     </div>
-                    <div className="box-area">
+                    <div className="box-area" onClick={() => setPaginaDestino("/Productos")}> {/*link a página*/}
                         <div className="icon-area">
                             <i className="icon two"><FontAwesomeIcon icon={fa2} /></i>
                         </div>
                         <h6>Agregar Producto</h6>
                         <p>Registrar los productos disponibles en la granja, como alimentos, suministros y otros elementos.</p>
                     </div>
-                    <div className="box-area">
+                    <div className="box-area" onClick={() => setPaginaDestino("/Departamento")}> {/*link a página*/}
                         <div className="icon-area">
                             <i className="icon three"><FontAwesomeIcon icon={fa3} /></i>
                         </div>
