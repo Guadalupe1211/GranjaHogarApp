@@ -5,11 +5,15 @@ import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import * as CategoriaService from '../Services/CategoriaService';
 import * as CategoriaServiceCreate from '../Services/CategoriaServiceCreate';
 
-export const CategoriasGaleria = ({ onEditCategoria,updated  }) => {
+export const CategoriasGaleria = ({ onEditCategoria, updated }) => {
     const [categorias, setCategorias] = useState([]);
     const navigate = useNavigate();
     const [lastUpdate, setLastUpdate] = useState(Date.now());
-
+    /*control de delete*/
+    const [showConfirmation, setShowConfirmation] = useState(false);
+    const [selectedID,setSelectedID]=useState(null)
+    /**/
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -19,16 +23,16 @@ export const CategoriasGaleria = ({ onEditCategoria,updated  }) => {
                 console.error('Error al obtener las categorías:', error);
             }
         };
-	console.log("fetching data")
         fetchData();
-    }, [lastUpdate,updated]);
+    }, [lastUpdate, updated]);
 
     const handleUpdate = (categoria) => {
         onEditCategoria(categoria);
-	setLastUpdate(Date.now())
+        setLastUpdate(Date.now())
     };
 
     const handleDelete = async (id) => {
+
         try {
             await CategoriaServiceCreate.deleteCategoria(id);
             alert('Categoría eliminada correctamente');
@@ -36,7 +40,7 @@ export const CategoriasGaleria = ({ onEditCategoria,updated  }) => {
         } catch (error) {
             console.error('Error al eliminar la categoría:', error);
         }
-	    setLastUpdate(Date.now())
+        setLastUpdate(Date.now())
     };
 
     const handleCategoryClick = (categoriaId) => {
@@ -56,16 +60,30 @@ export const CategoriasGaleria = ({ onEditCategoria,updated  }) => {
                                     <button className="update-button" onClick={(e) => { e.stopPropagation(); handleUpdate(categoria); }}>
                                         <FontAwesomeIcon icon={faPenToSquare} />
                                     </button>
-                                    <button className="delete-button" onClick={(e) => { e.stopPropagation(); handleDelete(categoria.id); }}>
-                                        <FontAwesomeIcon icon={faTrash} />
-                                    </button>
+                                    {/*control de delete*/}
+                                    <div>
+                                        <button className="delete-button" onClick={(e) => { e.stopPropagation();setSelectedID(categoria.id) ;setShowConfirmation(!showConfirmation)}}> 
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </button>
+                                    </div>
                                 </div>
+                                
                             </div>
+                            {/*confirmación*/}
+                            {showConfirmation && selectedID===categoria.id &&(
+                                    <div className='delete-confirmation'>
+                                        <p><strong>¿Estas seguro de querer borrar esta categoría?</strong>Esto borrará los productos asociados a ella y su historial en movimiento inventario</p>
+                                        <button className='boton-si' onClick={(e) => { e.stopPropagation(); handleDelete(categoria.id) }}>Si</button>
+                                        <button className='boton-no' onClick={(e) => { e.stopPropagation(); setShowConfirmation(false) }}>No</button>
+                                    </div>
+                                )} {/**/}
                             <p>{categoria.descripcion}</p>
                         </div>
                     </div>
                 ))}
             </div>
+            {/* Show confirmation dialog */}
+
         </div>
     );
 };

@@ -1,74 +1,83 @@
 /* Banner design for products components */
-.box-space{
+.box-space {
   display: flex;
   flex-direction: column;
-  width:100%;
+  width: 100%;
   align-items: center;
 }
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+  padding: 14px 80px 18px 36px;
+  margin-top: 20px;
+  width: 600px;
+  height: auto; 
+  
+}
+
 .cardMetadata {
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-    margin-top: 15px;
-  }
-  .cardBlock{
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-  }
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 15px;
+  width: fit-content;
   
-  .cardContainerButtons {
-    display: flex;
-    gap: 15px;
-    height: 60px;
-    margin-right: 5px ;
-    margin-top: 20px;
-    
-  }
-  
-  .cardContainerButtons button{
-    background-color: transparent;
-    border-color: transparent;
-    scale: 1.2;
-  }
-  
-  .cardContainerButtons button:hover{
-    transform: scale(1.05);
-  }
-  
-  .cardContainerButtons button:active{
-    transform: scale(1.0);
-  }
-  
-  .card{
-    display: flex;
-    justify-content:space-between;
-      border-radius: 4px;
-      background: #fff;
-      box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
-        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    padding: 14px 80px 18px 36px;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 600px;
-    height: 100px;   
-  }
-  
-  .card:hover{
-       transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-  }
-  
-  .card h3{
-    font-weight: 600;
-  }
-  
-  .cardBlock img{
-    top: 10px;
-    left: 15px;
-    max-height: 100px; 
-  }
-  
+}
+
+.descripcion-producto{
+  word-wrap: break-word;
+  width: 300px;
+}
+.cardBlock {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.cardContainerButtons {
+  display: flex;
+  gap: 15px;
+  height: 60px;
+  margin-right: 5px;
+  margin-top: 20px;
+
+}
+
+.cardContainerButtons button {
+  background-color: transparent;
+  border-color: transparent;
+  scale: 1.2;
+}
+
+.cardContainerButtons button:hover {
+  transform: scale(1.05);
+}
+
+.cardContainerButtons button:active {
+  transform: scale(1.0);
+}
+
+
+.card:hover {
+  /* transform: scale(1.02); */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.card h3 {
+  font-weight: 600;
+}
+
+.cardBlock img {
+  top: 10px;
+  left: 15px;
+  max-height: 100px;
+}
+
 /* Botón base */
 button {
   padding: 10px 20px;
@@ -82,101 +91,107 @@ button {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 10px 0;
-  
+
 }
 
-  
-  /* Estilo para el botón de agregar producto */
-  button.agregar-producto {
-    background-color: #126b27;
-  }
-  
-  button.agregar-producto:hover {
-    background-color: #4CAF50;
-  }
-  
-  button.agregar-producto:active {
-    background-color: #126b27;
-  }
-  
-  /* Estilo para posicionar el botón en la esquina superior derecha */
- 
-  .button-container button {
-    position:absolute;
-    margin-top: 25px;
-    
-  }
-  
-  /* Estilos para los botones en Product.js */
-  .update-button, .delete-button {
-    padding: 8px 12px;
-    font-size: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .update-button {
-    background-color: #4CAF50; /* Verde */
-    color: rgb(0, 0, 0);
-  }
-  
-  .update-button:hover {
-    background-color: #45a049;
-  }
-  
-  .delete-button {
-    background-color: #f44336; /* Rojo */
-    color: rgb(0, 0, 0);
-  }
-  
-  .delete-button:hover {
-    background-color: #da190b;
-  }
-  
-  
-  .titulo-productos {
-    background-color: #74c54b;
-    color: white;
-    margin-top: 0%;
-    height: 50px;
-    align-content: center;
-  }
-  
-  /* Base styles for the form */
 
-  form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px; /* Adjust width as necessary */
-    margin: 40px auto;
-    font-family: 'Arial', sans-serif;
-  }
-  /* Style for form elements */
-  form div {
-    margin-bottom: 20px;
-  }
-  
-  form label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  form input[type="text"],
-  form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding in width */
-  }
-  
+/* Estilo para el botón de agregar producto */
+button.agregar-producto {
+  background-color: #126b27;
+}
+
+button.agregar-producto:hover {
+  background-color: #4CAF50;
+}
+
+button.agregar-producto:active {
+  background-color: #126b27;
+}
+
+/* Estilo para posicionar el botón en la esquina superior derecha */
+
+.button-container button {
+  position: absolute;
+  margin-top: 25px;
+
+}
+
+/* Estilos para los botones en Product.js */
+.update-button,
+.delete-button {
+  padding: 8px 12px;
+  font-size: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.update-button {
+  background-color: #4CAF50;
+  /* Verde */
+  color: rgb(0, 0, 0);
+}
+
+.update-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336;
+  /* Rojo */
+  color: rgb(0, 0, 0);
+}
+
+.delete-button:hover {
+  background-color: #da190b;
+}
+
+
+.titulo-productos {
+  background-color: #74c54b;
+  color: white;
+  margin-top: 0%;
+  height: 50px;
+  align-content: center;
+}
+
+/* Base styles for the form */
+
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  /* Adjust width as necessary */
+  margin: 40px auto;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Style for form elements */
+form div {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /* Include padding in width */
+}
+
 
 /* Styling for buttons */
 
@@ -186,25 +201,45 @@ form button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-right: 10px; /* Space between buttons */
+  margin-right: 10px;
+  /* Space between buttons */
 }
-  form button[type="submit"] {
-    background-color: #2d2d2d;
-    color: white;
-  }
-  
-  form button[type="button"] { /* Delete button styling */
-    background-color: #dc3545;
-    color: white;
-  }
-  
-  form button:hover {
-    opacity: 0.9;
-  }
-  
-  .producto-form input,
+
+form button[type="submit"] {
+  background-color: #2d2d2d;
+  color: white;
+}
+
+form button[type="button"] {
+  /* Delete button styling */
+  background-color: #dc3545;
+  color: white;
+}
+
+form button:hover {
+  opacity: 0.9;
+}
+
+.producto-form input,
 .producto-form select {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+}
+
+/*Conformación de borrado de información*/
+.delete-confirmation {
+  width: 240px;
+  background-color: rgb(161, 1, 1);
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+
+  p {
+    color: white;
+  }
+
+  .boton-si {
+    margin-right: 30px;
+  }
 }

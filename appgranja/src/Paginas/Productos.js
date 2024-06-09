@@ -9,6 +9,7 @@ export const Productos = () => {
     const [showForm, setShowForm] = useState(false);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
+
     useEffect(() => {
         const loadProducts = async () => {
             try {
