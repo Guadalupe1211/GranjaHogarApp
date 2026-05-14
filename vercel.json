@@ -1,20 +1,32 @@
 {
   "version": 2,
-  "outputDirectory": "appgranja/build",
-  "buildCommand": "cd appgranja && npm install && DISABLE_ESLINT_PLUGIN=true npm run build",
-  "rewrites": [
+  "builds": [
     {
-      "source": "/api/:path*",
-      "destination": "SistemaInventario/wsgi.py"
+      "src": "appgranja/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
     },
     {
-      "source": "/:path*",
-      "destination": "/index.html"
+      "src": "SistemaInventario/wsgi.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.12"
+      }
     }
   ],
-  "functions": {
-    "SistemaInventario/wsgi.py": {
-      "runtime": "python3.12"
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "SistemaInventario/wsgi.py"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/appgranja/build/index.html"
     }
-  }
+  ]
 }
