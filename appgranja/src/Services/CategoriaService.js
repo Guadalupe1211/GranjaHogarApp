@@ -1,14 +1,21 @@
 // CategoriaService.js
 import axios from 'axios';
 
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+
+const instance = axios.create({
+    baseURL: `${BASE_URL}/api/categorias`,
+    timeout: 5000,
+});
+
 // Configura la URL base de tu API
-const API_URL = '/api/categorias';
+//const API_URL = '/api/categorias';
 
 // Crear una instancia de Axios con la configuración base
-const instance = axios.create({
-    baseURL: API_URL,
-    timeout: 1000,
-});
+//const instance = axios.create({
+  //  baseURL: API_URL,
+    //timeout: 1000,
+//});
 
 // URL de la imagen predeterminada
 const DEFAULT_IMAGE_URL = 'Categorias.png';
@@ -17,7 +24,7 @@ const DEFAULT_IMAGE_URL = 'Categorias.png';
 export const getCategorias = async () => {
     
     try {
-        const response = await instance.get();
+        const response = await instance.get('/');
         const categorias = response.data.map(categoria => ({
             ...categoria,
             
