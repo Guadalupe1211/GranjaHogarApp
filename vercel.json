@@ -11,5 +11,10 @@
       "source": "/:path*",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "functions": {
+    "SistemaInventario/wsgi.py": {
+      "runtime": "python3.12"
+    }
+  }
 }
