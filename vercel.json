@@ -19,11 +19,16 @@
       "dest": "SistemaInventario/wsgi.py"
     },
     {
-      "handle": "filesystem"
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "^/$",
+      "dest": "/appgranja/build/index.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/appgranja/build/index.html"
+      "dest": "/appgranja/build/$1"
     }
   ]
 }
