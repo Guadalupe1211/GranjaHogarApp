@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+
+const instance = axios.create({
+    baseURL: BASE_URL,
+});
+
+
 // Function to delete InventarioDepartamento
 export const deleteInventarioDepartamento = async (id) => {
     try {
