@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -103,7 +103,7 @@ DATABASES = {
     "default": dj_database_url.config(
         default=os.environ.get('DATABASE_URL', f'sqlite:///{BASE_DIR}/db.sqlite3'),
         conn_max_age=600,
-        ssl_require=not DEBUG,   # SSL solo en producción (Neon lo requiere)
+        ssl_require=False,   # SSL solo en producción (Neon lo requiere)
     )
 }
 
@@ -152,3 +152,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CSRF_TRUSTED_ORIGINS = [
+    'https://granja-hogar-api.onrender.com',
+    'https://granja-hogar-app-alpha.vercel.app',
+]
