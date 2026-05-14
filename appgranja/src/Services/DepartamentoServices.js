@@ -1,17 +1,18 @@
 import axios from 'axios';
 
-const API_URL = '/api/departamento';
+//const API_URL = '/api/departamento';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 const DEFAULT_IMAGE_URL = 'https://i.pinimg.com/736x/64/46/a5/6446a512dd4b5d0a2c67fe5ebfb0775f.jpg';
 
 const instance = axios.create({
-    baseURL: API_URL,
-    timeout: 1000,
+    baseURL: `${BASE_URL}/api/departamento`,
+    timeout: 5000,
 });
 
 // Función para obtener todos los departamentos
 export const getDepartamentos = async () => {
     try {
-        const response = await instance.get();
+        const response = await instance.get('/');
         const departamentos = response.data.map(departamento => ({
             ...departamento,
             imagen: departamento.imagen || DEFAULT_IMAGE_URL
