@@ -24,7 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-q$bf&5i@-2=lm$&z=+5l2ydusf&ss&=_$nb2j(p#-!t7+pqs+5"
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-q$bf&5i@-2=lm$&z=+5l2ydusf&ss&=_$nb2j(p#-!t7+pqs+5')
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+    'granja-hogar-api.onrender.com',
+]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
